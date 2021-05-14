@@ -2,9 +2,9 @@ package com.gildedrose;
 
 class GildedRose
 {
-    Item[] items;
+    private final Item[] items;
 
-    public GildedRose(Item[] items)
+    public GildedRose(final Item[] items)
     {
         this.items = items;
     }
@@ -13,87 +13,12 @@ class GildedRose
     {
         for (final Item item : items)
         {
-            doUpdate(item);
+            item.doUpdate();
         }
     }
 
-    private void doUpdate(final Item item)
+    public Item[] items()
     {
-        if (item.name.equals("Aged Brie"))
-        {
-            if (item.quality < 50)
-            {
-                item.quality = item.quality + 1;
-
-            }
-
-            item.sellIn = item.sellIn - 1;
-
-            if (item.sellIn < 0)
-            {
-                if (item.quality < 50)
-                {
-                    item.quality = item.quality + 1;
-                }
-            }
-        }
-        else
-        {
-            if (item.name.equals("Backstage passes to a TAFKAL80ETC concert"))
-            {
-                if (item.quality < 50)
-                {
-                    item.quality = item.quality + 1;
-
-                    if (item.sellIn < 11)
-                    {
-                        if (item.quality < 50)
-                        {
-                            item.quality = item.quality + 1;
-                        }
-                    }
-
-                    if (item.sellIn < 6)
-                    {
-                        if (item.quality < 50)
-                        {
-                            item.quality = item.quality + 1;
-                        }
-                    }
-                }
-
-                item.sellIn = item.sellIn - 1;
-
-                if (item.sellIn < 0)
-                {
-                    item.quality = 0;
-                }
-            }
-            else
-            {
-                if (item.name.equals("Sulfuras, Hand of Ragnaros"))
-                {
-
-                }
-                else
-                {
-                    if (item.quality > 0)
-                    {
-                        item.quality = item.quality - 1;
-                    }
-
-                    item.sellIn = item.sellIn - 1;
-
-                    if (item.sellIn < 0)
-                    {
-                        if (item.quality > 0)
-                        {
-                            item.quality = item.quality - 1;
-                        }
-                    }
-                }
-            }
-        }
+        return items;
     }
-
 }
