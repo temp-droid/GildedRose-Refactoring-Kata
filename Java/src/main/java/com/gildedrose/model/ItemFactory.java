@@ -12,36 +12,21 @@ public class ItemFactory
     {
         builder.put(
                 "Aged Brie",
-                ItemFactory::createAgedBrie
+                item -> new AgedBrie(item.sellIn, item.quality)
         );
         builder.put(
                 "Backstage passes to a TAFKAL80ETC concert",
-                ItemFactory::createBackstagePass
+                item -> new BackstagePass(item.sellIn, item.quality)
         );
         builder.put(
                 "Sulfuras, Hand of Ragnaros",
-                ItemFactory::createSulfuras
+                item -> new Sulfuras(item.sellIn, item.quality)
         );
     }
 
     public static BasicItem createItem(final Item item)
     {
         return builder.getOrDefault(item.name, ItemFactory::createBasicItem).apply(item);
-    }
-
-    private static AgedBrie createAgedBrie(final Item item)
-    {
-        return new AgedBrie(item.sellIn, item.quality);
-    }
-
-    private static BackstagePass createBackstagePass(final Item item)
-    {
-        return new BackstagePass(item.sellIn, item.quality);
-    }
-
-    private static Sulfuras createSulfuras(final Item item)
-    {
-        return new Sulfuras(item.sellIn, item.quality);
     }
 
     private static BasicItem createBasicItem(final Item item)
