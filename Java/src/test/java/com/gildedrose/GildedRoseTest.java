@@ -1,5 +1,6 @@
 package com.gildedrose;
 
+import com.gildedrose.model.Item;
 import org.approvaltests.combinations.CombinationApprovals;
 import org.junit.jupiter.api.Test;
 
@@ -16,10 +17,13 @@ class GildedRoseTest
 
     private Item doUpdateQuality(final String name, final int sellIn, final int quality)
     {
-        Item[] items = new Item[]{ Item.createItem(name, sellIn, quality) };
+        // given
+        Item item = new Item(name, sellIn, quality);
+        Item[] items = new Item[]{ item };
         GildedRose app = new GildedRose(items);
+        // when
         app.updateQuality();
+        // then
         return app.items()[0];
     }
-
 }

@@ -1,5 +1,9 @@
 package com.gildedrose;
 
+import com.gildedrose.model.BasicItem;
+import com.gildedrose.model.Item;
+import com.gildedrose.model.ItemFactory;
+
 class GildedRose
 {
     private final Item[] items;
@@ -13,11 +17,20 @@ class GildedRose
     {
         for (final Item item : items)
         {
-            item.doUpdate();
+            updateQuality(item);
         }
     }
 
-    public Item[] items()
+    private void updateQuality(final Item item)
+    {
+        BasicItem basicItem = ItemFactory.createItem(item);
+        basicItem.doUpdate();
+
+        item.sellIn = basicItem.toItem().sellIn;
+        item.quality = basicItem.toItem().quality;
+    }
+
+    protected Item[] items()
     {
         return items;
     }

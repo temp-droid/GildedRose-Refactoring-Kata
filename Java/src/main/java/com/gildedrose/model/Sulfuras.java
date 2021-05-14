@@ -1,6 +1,6 @@
-package com.gildedrose;
+package com.gildedrose.model;
 
-public class Sulfuras extends Item
+public class Sulfuras extends BasicItem
 {
     Sulfuras(final int sellIn, final int quality)
     {
@@ -8,7 +8,7 @@ public class Sulfuras extends Item
     }
 
     @Override
-    protected void doUpdate()
+    public void doUpdate()
     {
 
     }
